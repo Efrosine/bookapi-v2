@@ -25,7 +25,11 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        // $data = $request->all();
+        // $data['password'] = bcrypt($data['password']);
+        // $user = User::create($data);
+
+        // return new GeneralResource($user, 'User berhasil di tambahkan', 201);
     }
 
     /**
@@ -81,5 +85,23 @@ class UserController extends Controller
                 'token' => $token
             ]
         ], 201);
+    }
+
+    public function register(UserRequest $request)
+    {
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
+
+        return new GeneralResource($user, 'User berhasil di tambahkan', 201);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Logout berhasil.'
+        ], 200);
     }
 }

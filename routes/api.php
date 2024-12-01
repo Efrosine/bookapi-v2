@@ -9,6 +9,7 @@ use App\Http\Controllers\LendingController;
 use App\Http\Controllers\UserLendingsController;
 
 Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
 
 Route::apiResource('books', BookController::class)->only(['index', 'show']);
 Route::apiResource('reviews', ReviewController::class)->only(['index', 'show']);
