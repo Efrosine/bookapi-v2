@@ -24,7 +24,7 @@ Route::middleware(['role:user,admin', 'auth:sanctum'])->group(function () {
 Route::middleware(['role:admin', 'auth:sanctum'])->group(function () {
     Route::apiResource('user', UserController::class)->except(['show']);
     Route::apiResource('books', BookController::class)->except(['index', 'show']);
-    Route::apiResource('reviews', ReviewController::class)->except(['show', 'update']);
+    Route::apiResource('reviews', ReviewController::class)->except(['show', 'index']);
     Route::apiResource('lendings', LendingController::class);
 });
 
