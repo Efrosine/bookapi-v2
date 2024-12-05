@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lending;
+use App\Models\User;
+use App\Models\Book;
 use App\Http\Requests\LendingRequest;
 use Illuminate\Http\Request;
 use App\Http\Resources\GeneralResource;
@@ -58,5 +60,24 @@ class LendingController extends Controller
         } else {
             return new GeneralResource($lending, 'Buku Gagal di hapus', 400);
         }
+    }
+
+    public function requestLending(LendingRequest $request)
+    {
+        $validate = $request->validated();
+        $lendings = Lending::create($validate);
+        return new GeneralResource($lendings, 'Peminjaman berhasil ditambahkan', 201);
+    }
+
+    public function getBookUserId()
+    {
+        $users = User::pluck('id as user_id')->sort()->values();
+        $books = Book::pluck('id as book_id')->sort()->values();
+
+        $combined = [
+            'users' => $users,
+            'books' => $books
+        ];
+        return new GeneralColectionResource($combined, 'User IDs and Book IDs combined');
     }
 }

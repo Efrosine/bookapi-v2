@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lending;
+use App\Http\Resources\GeneralResource;
+use App\Http\Resources\GeneralColectionResource;
 
 class UserLendingsController extends Controller
 {
@@ -17,16 +19,10 @@ class UserLendingsController extends Controller
 
         // Jika tidak ada lendings, kembalikan pesan kosong
         if ($lendings->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No lendings found for this user',
-            ], 404);
+            return new GeneralResource(null, 'Lendings not found', 404);
         }
 
         // Kembalikan hasil dalam format JSON
-        return response()->json([
-            'success' => true,
-            'data' => $lendings,
-        ]);
+        return new GeneralColectionResource($lendings, 'Lendings found');
     }
 }

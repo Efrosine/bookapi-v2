@@ -18,12 +18,24 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('admin123'),
             'role' => 'admin',
+            'address' => fake()->address(),
+            'email_verified_at' => now(),
+        ]);
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin2@example.com',
+            'password' => Hash::make('admin123'),
+            'role' => 'admin',
+            'address' => fake()->address(),
+            'email_verified_at' => now(),
         ]);
 
         User::create([
             'name' => 'User Biasa',
             'email' => 'user@example.com',
             'password' => Hash::make('user123'),
+            'address' => fake()->address(),
+            'email_verified_at' => now(),
         ]);
 
 

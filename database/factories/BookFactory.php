@@ -23,7 +23,7 @@ class BookFactory extends Factory
             'overview' => $this->faker->paragraph(), // Deskripsi
             'read_time' => $this->faker->randomElement(['2 hours', '4 hours', '1 day']), // Perkiraan waktu baca
             'release_date' => $this->faker->date(), // Tanggal rilis
-            'image_url' => 'bookImg/5qf472jV4HRl5mupmpe86QadXQnw4mYiSl83L45W.jpg'
+            'image_url' => 'bookImg/QbAvFM3YKQnj7EhIsnBOSPRxa3qklCC9fH0gGCBj.jpg'
         ];
     }
 }

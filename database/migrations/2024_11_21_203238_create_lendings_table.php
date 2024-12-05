@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
             $table->dateTime('lent_at');
+            $table->enum('status', ['pending', 'approved', 'declined', 'returned'])->default('pending');
             $table->dateTime('returned_at')->nullable();
             $table->string('notes')->nullable();
             $table->timestamps();

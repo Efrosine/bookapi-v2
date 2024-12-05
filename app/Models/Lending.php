@@ -10,7 +10,7 @@ class Lending extends Model
 
     /** @use HasFactory<\Database\Factories\LendingFactory> */
     use HasFactory;
-    protected $fillable = ['user_id', 'book_id', 'lent_at', 'returned_at', 'notes'];
+    protected $fillable = ['user_id', 'book_id', 'lent_at', 'status', 'returned_at', 'notes'];
 
     public function book()
     {
